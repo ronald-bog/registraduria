@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="">
+      <img src="https://www.registraduria.gov.co/IMG/rnec-logo.png" class="img-fluid" alt="" width="180">
+      <img src="https://www.registraduria.gov.co/IMG/LogosHeader/logos_web_sigloXXI_negro.png" class="img-fluid" alt=""
+        width="180">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 " style="font-size: 20px;">
+
+        <li *ngIf="administrador" class="nav-item">
+          <a class="nav-link" routerLink="/mesas">Mesas |</a>
+        </li>
+        <li *ngIf="administrador" class="nav-item">
+          <a class="nav-link" routerLink="/partidos">Partidos |</a>
+        </li>
+        <li *ngIf="administrador" class="nav-item">
+          <a class="nav-link" routerLink="/candidatos">Candidatos |</a>
+        </li>
+        <li *ngIf="administrador || jurado" class="nav-item">
+          <a class="nav-link" routerLink="/resultados">Resultados |</a>
+        </li>
+        <li *ngIf="administrador || ciudadano || jurado" ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Reportes
+          </a>
+          <ul ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" routerLink="/reportea1">Votos candidatos general</a></li>
+            <li><a class="dropdown-item" routerLink="/reportea2">Votos candidatos por mesa</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" routerLink="/reporteb">Mesas con mayor votación</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" routerLink="/reportec1">Votos partidos políticos general</a></li>
+            <li><a class="dropdown-item" routerLink="/reportec2">Votos partidos por mesa</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" routerLink="/reported">Distribución por partidos del nuevo congreso</a></li>
+          </ul>
+        </li>
+        <div *ngIf="administrador" class="d-flex">
+          <button class="btn btn-success" type="submit" routerLink="/usuario">Gestión Usuarios</button>
+        </div>
+      </ul>
+      <div *ngIf="!auth" class="d-flex">
+        <button class="btn btn-outline-info" type="submit" routerLink="/login">LOGIN</button>
+      </div>
+      <div *ngIf="auth" class="d-flex">
+        <button class="btn btn-outline-secondary" type="submit" (click)="logout()">Cerrar Sesión</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar justify-content-center" style="background-color: #003057;">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active link-light" aria-current="page" routerLink="/">Sobre Nosotros</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link link-light" routerLink="/mision">Misión</a>
+    </li>
+    <li></li>
+    <li class="nav-item">
+      <a class="nav-link link-light" routerLink="/vision">Visión</a>
+    </li>
+  </ul>
+</nav>

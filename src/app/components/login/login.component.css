@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  background: url(https://registraduria.gov.co/IMG/arton30828.jpg?1663945596);
+  background-size: cover;
+  background-attachment: fixed;
+  height: 900px;
+  justify-content:center;
+  margin: 0px;
+  padding: 40px;
+}
+

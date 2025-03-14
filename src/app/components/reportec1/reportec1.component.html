@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="justify-content-center">
+    <H1>VOTOS PARTIDOS POLITICOS GENERAL</H1>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div id="listados">
+        <table class="table table-hover table-sm align-middle text-center">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Partido</th>
+              <th scope="col">Votos</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of reportec1">
+            <tr>
+              <td>{{ item.name }}</td>
+              <td>{{ item.value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-9">
+      <ngx-charts-pie-chart [view]="view" scheme="vivid" [results]="reportec1" [gradient]="gradient"
+        [legend]="showLegend" legendTitle="PARTIDOS" [labels]="showLabels" [doughnut]="isDoughnut"
+        (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+      </ngx-charts-pie-chart>
+    </div>
+  </div>
+</div>

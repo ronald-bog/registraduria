@@ -1,0 +1,23 @@
+<body>
+  <div class="card text-white bg-secondary bg-opacity-50" style="max-width: 40rem">
+    <div class="card-header">
+      <h2>L O G I N</h2>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Correo</label>
+        <div class="col-sm-10">
+          <input type="email" [(ngModel)]="correo" class="form-control" id="inputEmail3" placeholder="Ingrese correo" />
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Contraseña</label>
+        <div class="col-sm-10">
+          <input type="password" [(ngModel)]="contrasena" class="form-control" id="inputPassword3" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
+      <p class="card-text"></p>
+    </div>
+  </div>
+</body>

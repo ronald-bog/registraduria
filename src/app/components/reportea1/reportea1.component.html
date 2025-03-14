@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div id="listados">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <H1>VOTOS CANDIDATOS GENERAL</H1>
+          </div>
+        </div>
+        <table class="table table-hover table-sm align-middle text-center">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Candidato</th>
+              <th scope="col">Partido</th>
+              <th scope="col">Votos</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of reportea1 | sort:'total'">
+            <tr>
+              <td>{{ item.doc.candidato.nombre_apellido }}</td>
+              <td>{{ item.doc.candidato.partido.nombre }}</td>
+              <td>{{ item.total }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col">
+      <ngx-charts-bar-vertical [view]="view" scheme="ocean" [results]="grafico" [gradient]="gradient"
+        [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+        (select)="onSelect($event)">
+      </ngx-charts-bar-vertical>
+    </div>
+  </div>
+</div>

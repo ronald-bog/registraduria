@@ -1,0 +1,73 @@
+<div class="modal fade" id="resultadoscrModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 *ngIf="modoCreacion" class="modal-title fs-5" id="exampleModalLabel">
+          REGISTRAR RESULTADO
+        </h1>
+        <h1 *ngIf="!modoCreacion" class="modal-title fs-5" id="exampleModalLabel">
+          MODIFICACION DE RESULTADO
+        </h1>
+        <button type="button" class="btn-close" (click)="regreso()" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-3">
+            <label>Mesa</label>
+          </div>
+          <div class="col-9">
+            <select class="form-select" [(ngModel)]="point.id_mesa">
+              <option selected></option>
+              <option *ngFor="let mesa of mesas" value="{{ mesa._id }}">
+                {{ mesa.numero }}
+              </option>
+            </select>
+            <input class="form-control" type="hidden" [disabled]="!modoCreacion" [(ngModel)]="point.id_mesa" />
+            <p *ngIf="intentoEnvio && resultado.id_mesa == ''">Requerido</p>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-3">
+            <label>Candidato</label>
+          </div>
+          <div class="col-9">
+            <select class="form-select" [(ngModel)]="point.id_candidato">
+              <option selected></option>
+              <option *ngFor="let item of candidatos" value="{{ item._id }}">
+                {{ item.nombre_apellido }}
+              </option>
+            </select>
+            <input class="form-control" type="hidden" [(ngModel)]="point.id_candidato" />
+            <p *ngIf="intentoEnvio && resultado.id_candidato == ''">
+              Requerido
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-3">
+            <label>Votos</label>
+          </div>
+          <div class="col-9">
+            <input class="form-control" type="number" [disabled]="!modoCreacion" [(ngModel)]="resultado.votos" />
+            <p *ngIf="intentoEnvio && resultado.votos == ''">Requerido</p>
+          </div>
+        </div>
+        <br />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="regreso()">
+          Regresar
+        </button>
+        <button *ngIf="modoCreacion" class="btn btn-primary btn-block" data-bs-dismiss="modal" (click)="agregar()">
+          Crear
+        </button>
+        <button *ngIf="!modoCreacion" class="btn btn-primary btn-block" data-bs-dismiss="modal" (click)="editar()">
+          Actualizar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

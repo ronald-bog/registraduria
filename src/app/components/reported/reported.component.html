@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="justify-content-center">
+    <H1>DISTRIBUCION POR PARTIDOS DEL NUEVO CONGRESO</H1>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div id="listados">
+        <table class="table table-hover table-sm align-middle text-center">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Partido</th>
+              <th scope="col">Votos</th>
+              <th scope="col">%</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of reported">
+            <tr>
+              <td>{{ item.name }}</td>
+              <td>{{ item.value }}</td>
+              <td>{{ (item.value / item.total)*100 | number: '.0-2' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-9">
+      <ngx-charts-advanced-pie-chart [view]="view" scheme="vivid" [results]="reported" [gradient]="gradient"
+        (select)="onSelect($event)" (activate)="onActivate($event)" (deactivate)="onDeactivate($event)">
+      </ngx-charts-advanced-pie-chart>
+    </div>
+  </div>
+</div>

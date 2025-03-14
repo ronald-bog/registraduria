@@ -1,0 +1,40 @@
+<div id="listados">
+  <div class="row justify-content-center">
+    <div class="d-grid gap-2 col-3 mx-auto">
+      <button class="btn btn-outline-success" type="button" (click)="agregar()">Crear Usuario</button>
+    </div>
+    <div class="col-9">
+      <H1>LISTADO DE USUARIOS</H1>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+  <table class="table table-hover table-sm align-middle text-center">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Seudónimo</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Rol</th>
+        <th scope="col">EDITAR</th>
+        <th scope="col">ELIMINAR</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let usuarioActual of usuarios">
+      <tr>
+        <td>{{ usuarioActual.seudonimo }}</td>
+        <td>{{ usuarioActual.correo }}</td>
+        <td>{{ usuarioActual.rol.nombre }}</td>
+        <td>
+          <button type="button" class="btn btn-primary btn-sm" (click)="editar(usuarioActual._id!)">
+            <i class="fa-regular fa-pen-to-square" style="font-size: 20px"></i>
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger btn-sm" (click)="eliminar(usuarioActual._id!)">
+            <i class="fa-regular fa-trash-can" style="font-size: 20px"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

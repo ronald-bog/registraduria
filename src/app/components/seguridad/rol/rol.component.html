@@ -1,0 +1,73 @@
+<div class="modal fade" id="rolModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 *ngIf="modoCreacion" class="modal-title fs-5" id="exampleModalLabel">
+          CREACION DE USUARIO
+        </h1>
+        <h1 *ngIf="!modoCreacion" class="modal-title fs-5" id="exampleModalLabel">
+          MODIFICACION DE USUARIO
+        </h1>
+        <button type="button" class="btn-close" (click)="regreso()" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-3">
+            <label>Seudonimo</label>
+          </div>
+          <div class="col-9">
+            <input class="form-control" type="text" [(ngModel)]="usuario.seudonimo" />
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-3">
+            <label>Correo</label>
+          </div>
+          <div class="col-9">
+            <input class="form-control" type="text" [disabled]="!modoCreacion" [(ngModel)]="usuario.correo" />
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-3">
+            <label>Contraseña</label>
+          </div>
+          <div class="col-9">
+            <input class="form-control" type="password" [(ngModel)]="usuario.contrasena" />
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-3">
+            <label>Rol</label>
+          </div>
+          <div class="col-9">
+            <select class="form-select" [(ngModel)]="_id" (click)="separa()">
+              <option selected></option>
+              <option *ngFor="let rol of roles" value="{{ rol._id }}&{{rol.nombre}}&{{rol.descripcion}}">
+                {{ rol.nombre }}
+              </option>
+            </select>
+          </div>
+          <div class="col-9">
+            <input class="form-control" type="hidden" [(ngModel)]="_id" />
+          </div>
+        </div>
+      </div>
+<br>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="regreso()">
+        Regresar
+      </button>
+
+      <button *ngIf="modoCreacion" class="btn btn-primary btn-block" data-bs-dismiss="modal" (click)="agregar()">
+        Crear
+      </button>
+      <button *ngIf="!modoCreacion" class="btn btn-primary btn-block" data-bs-dismiss="modal" (click)="editar()">
+        Actualizar
+      </button>
+    </div>
+  </div>
+</div>

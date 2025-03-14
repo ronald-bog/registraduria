@@ -1,0 +1,56 @@
+<div class="modal fade" id="candidatoscrModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 *ngIf="modoCreacion" class="modal-title fs-5" id="exampleModalLabel">CREACION DE CANDIDATO</h1>
+        <h1 *ngIf="!modoCreacion" class="modal-title fs-5" id="exampleModalLabel">MODIFICACION DE CANDIDATO</h1>
+        <button type="button" class="btn-close" (click)="regreso()" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-3">
+            <label>Cedula</label>
+          </div>
+          <div class="col-9">
+            <input class="form-control" type="number" [disabled]="!modoCreacion" [(ngModel)]="candidato.cedula" />
+            <p *ngIf="intentoEnvio && candidato.cedula == ''">Requerido</p>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-3">
+            <label>nombre_apellido</label>
+          </div>
+          <div class="col-9">
+            <input class="form-control" type="text" [(ngModel)]="candidato.nombre_apellido" />
+            <p *ngIf="intentoEnvio && candidato.nombre_apellido == ''">Requerido</p>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-3">
+            <label>Resolucion</label>
+          </div>
+          <div class="col-9">
+            <input class="form-control" type="number" [(ngModel)]="candidato.resolucion" />
+            <p *ngIf="intentoEnvio && candidato.resolucion == ''">Requerido</p>
+          </div>
+        </div>
+        <br />
+        <br />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="regreso()">
+          Regresar
+        </button>
+        <button *ngIf="modoCreacion" class="btn btn-primary btn-block" data-bs-dismiss="modal" (click)="agregar()">
+          Crear
+        </button>
+        <button *ngIf="!modoCreacion" class="btn btn-primary btn-block" data-bs-dismiss="modal" (click)="editar()">
+          Actualizar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="modal fade" id="candidatosprModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">ASIGNACION DE PARTIDO</h1>
+        <button type="button" class="btn-close" (click)="regreso()" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-3">
+            <label>NOMBRE</label>
+          </div>
+          <div class="col-9">
+            <input class="form-control" [(ngModel)]="candidato.nombre_apellido" disabled="" />
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-3">
+            <label>PARTIDO</label>
+          </div>
+          <div class="col-9">
+            <select class="form-select" [(ngModel)]="point.id_partido">
+              <option selected></option>
+              <option *ngFor="let partido of partidos" value="{{ partido._id }}">
+                {{ partido.nombre }}
+              </option>
+            </select>
+            <input class="form-control" type="hidden" [(ngModel)]="point.id_partido" />
+            <p *ngIf="intentoEnvio && candidato.resolucion == ''">Requerido</p>
+          </div>
+        </div>
+        <br />
+        <br />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="regreso()">
+          Regresar
+        </button>
+        <button class="btn btn-primary btn-block" data-bs-dismiss="modal" (click)="asignar()">
+          Crear
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

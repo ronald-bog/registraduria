@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <H1>VOTOS CANDIDATOS POR MESA</H1>
+    </div>
+    <div class="col-3">
+      <H3>Seleccione Mesa ------></H3>
+    </div>
+    <div class="col-2">
+      <select class="form-select" [(ngModel)]="point.id_mesa" (click)="listar(point.id_mesa)">
+        <option selected></option>
+        <option *ngFor="let mesa of mesas" value="{{ mesa._id }}">
+          {{ mesa.numero }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div id="listados">
+        <table class="table table-hover table-sm align-middle text-center">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Candidato</th>
+              <th scope="col">Partido</th>
+              <th scope="col">Votos</th>
+            </tr>
+          </thead>
+          <h1 *ngIf="reportea1==0">MESA SIN REGISTROS</h1>
+          <tbody *ngFor="let item of reportea1">
+            <tr>
+              <td>{{ item.name }}</td>
+              <td>{{ item.partido }}</td>
+              <td>{{ item.value }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col ">
+      <div *ngFor="let numero of mesas">
+        <h1 *ngIf="numero._id == point.id_mesa">MESA: {{numero.numero}}</h1>
+      </div>
+      <ngx-charts-bar-vertical [view]="view" scheme="ocean" [results]="reportea1" [gradient]="gradient"
+        [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+        (select)="onSelect($event)">
+      </ngx-charts-bar-vertical>
+    </div>
+  </div>
+</div>
